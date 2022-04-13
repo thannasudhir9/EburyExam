@@ -3,11 +3,11 @@
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>Trade reviewers</name>
     <queueMembers>
-        <users>
+        <!-- <users>
             <user>integration@00d090000082seseau.com</user>
             <user>insightssecurity@00d090000082seseau.com</user>
             <user>thannasudhir9@empathetic-raccoon-etpckv.com</user>
-        </users>
+        </users> -->
     </queueMembers>
     <queueSobject>
         <sobjectType>Trade__c</sobjectType>
