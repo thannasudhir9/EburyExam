@@ -1,0 +1,147 @@
+<!--
+  @description       : 
+  @author            : Sudhir Kumar Thanna
+  @group             : 
+  @last modified on  : 04-12-2022
+  @last modified by  : Sudhir Kumar Thanna
+-->
+<template>
+    
+   <!--  <template if:true={tradeList}>
+        <lightning-card title="Booked Trades">
+            <lightning-button label="New Trade" onclick={handleClick} class="slds-m-right_x-small slds-float_right"></lightning-button>
+            <br>
+            <br>
+            <lightning-datatable data={tradeList} columns={columns} key-field="name"></lightning-datatable>
+        </lightning-card>
+    </template> -->
+
+    <template if:true={tradeList}>
+    <lightning-card title="Booked Trades">
+    <hr style="height: 5px;background: black;">
+    <lightning-button label="New Trade" onclick={handleClick} class="slds-m-right_x-small slds-float_right"></lightning-button>
+        <br>
+        <br>
+    <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-max-medium-table--stacked-horizontal bu_centered-table slds-m-top--small">
+                        <thead>
+                            <tr class="slds-text-heading_label slds-text-title_caps">
+                                <th scope="col" class="thead">
+                                    <div class="min-header-width"
+                                        title="Sell CCY">Sell CCY</div>
+                                </th>
+                                <th scope="col" class="thead">
+                                    <div class="min-header-width"
+                                        title="Sell Amount">Sell Amount</div>
+                                </th>
+                                <th scope="col" class="thead">
+                                    <div class="min-header-width"
+                                        title="Buy CCY">Buy CCY</div>
+                                </th>
+                                <th scope="col" class="thead">
+                                    <div class="min-header-width"
+                                        title="Buy Amount">Buy Amount</div>
+                                </th>
+                                <th scope="col" class="thead">
+                                    <div class="min-header-width"
+                                        title="Rate">Rate</div>
+                                </th>
+                                <th scope="col" class="thead">
+                                    <div class="min-header-width"
+                                        title="Date Booked">Date Booked</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={DBdataDefault} for:item="member">
+                                <tr key={member.name} class="slds-hint-parent">
+                                    <td data-label="Sell CCY" >
+                                        <div  title={member.Sell_Currency__c}>
+                                            {member.Sell_Currency__c}
+                                        </div>
+                                    </td>
+                                    <td data-label="Sell Amount" >
+                                        <div  title={member.Sell_Amount__c}>
+                                            {member.Sell_Amount__c}
+                                        </div>
+                                    </td>
+                                    <td data-label="Buy CCY" >
+                                        <div  title={member.Buy_Currency__c}>
+                                            {member.Buy_Currency__c}
+                                        </div>
+                                    </td>
+                                    <td data-label="Buy Amount" >
+                                        <div  title={member.Buy_Amount__c}>
+                                            {member.Buy_Amount__c}
+                                        </div>
+                                    </td>
+                                    <td data-label="Rate" >
+                                        <div  title={member.Rate__c}>
+                                            {member.Rate__c}
+                                        </div>
+                                    </td>
+                                    <td data-label="Date Booked" >
+                                        <div  title={member.Date_Booked__c}>
+                                            {member.Date_Booked__c}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+        </table>
+    </lightning-card>
+</template>
+    <template if:true={newTradeBtn}>
+        <lightning-card title="New Trade">
+            <hr style="height: 5px;background: black;">
+            <div class="splitscreen">
+                <div class="left slds-float_left">
+                    <lightning-combobox
+                            name="Sell Currency"
+                            label="Sell Currency"
+                            value={sellCurrencyValue}
+                            placeholder=""
+                            options={options}
+                            onchange={sellhandleChange} >
+                    </lightning-combobox>
+                    <!-- <p>Selected value is: {sellCurrencyValue}</p> -->
+                    <br>
+                    <lightning-input type="text" label="Sell Amount" value={sellAmount} onchange={sellAmounthandleChange} placeholder=""></lightning-input>
+                    <br>
+                </div>
+                
+                <div class="center slds-align_absolute-center">
+                    <br>
+                    <br>
+                    <lightning-icon icon-name="utility:right" alternative-text="right" title="right"></lightning-icon>
+                    <label class="slds-form-element__label slds-no-flex">Rate</label>
+                    <br>
+                    <label class="slds-form-element__label slds-no-flex" style="font-size: small;font-weight: bold;">{rateValue}</label>
+                    <br>
+                    <lightning-icon icon-name="utility:right" alternative-text="right" title="right"></lightning-icon>
+                </div>
+
+                <div class="right slds-float_right">
+                    <lightning-combobox
+                                name="Buy Currency"
+                                label="Buy Currency"
+                                value={buyCurrencyValue}
+                                placeholder=""
+                                options={options}
+                                onchange={buyhandleChange} >
+                    </lightning-combobox>
+                    <!-- <p>Selected value is: {buyCurrencyValue}</p> -->
+                    <br>
+                    <lightning-input type="text" label="Buy Amount" placeholder="" value={buyAmount} disabled></lightning-input>
+                    <br>
+                </div>
+              </div>
+
+            <lightning-button label="Create" onclick={handleCreate} class="slds-m-right_x-small slds-float_left"></lightning-button>
+            <br>
+
+            <lightning-button label="Cancel" onclick={handleCancel} class="slds-m-right_x-small slds-float_right"></lightning-button>
+            <br>
+
+        </lightning-card>
+    </template>
+</template>
